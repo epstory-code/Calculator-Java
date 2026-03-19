@@ -14,15 +14,22 @@ public class CalculatorView extends JFrame {
 
     public CalculatorView() {
 
-        createAndShowGUI();
+        SwingUtilities.invokeLater(() -> {
+            createAndShowGUI();
+        });
+
         setTitle("Calculator");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
         setSize(500, 520);
     }
 
-    public void setButtonListener(ActionListener l){
-        btnLstnr = l;
+    public CalculatorView (int width, int height){
+        setSize(width, height);
+    }
+
+    public void setButtonListener(ActionListener lstnr){
+        btnLstnr = lstnr;
     }
 
     private void addComponentsToPane(){
@@ -40,7 +47,7 @@ public class CalculatorView extends JFrame {
 
         //Create a text pane to act as a display for the calculator
         displayPane = new JTextPane();
-        displayPane.setFont(new Font("Arial", Font.TRUETYPE_FONT, 30));
+        displayPane.setFont(new Font("Arial", Font.TRUETYPE_FONT, 40));
         displayPane.setEditable(true);
         displayPane.setOpaque(false);
         displayPane.setBackground(Color.BLACK);
@@ -71,16 +78,7 @@ public class CalculatorView extends JFrame {
         }
         panel.add(btnPanel, gbc);
 
-        /* === ROW 5: CALCULATE BUTTON === */
-        gbc.gridy = 6;
-        gbc.gridx = 0;
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridheight = 1;
-        gbc.weightx = 1.0;
-        gbc.weighty = 0.5;
-
-        this.pack();
-        this.add(panel);
+        add(panel);
     }
 
     public void createAndShowGUI(){

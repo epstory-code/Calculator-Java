@@ -5,16 +5,16 @@ import java.awt.event.ActionListener;
 public class CalculatorController {
     private CalculatorView myView;
     private CalculatorEngine myEngine;
+    private CustomListener myListener;
 
     public CalculatorController() {
         myEngine = new CalculatorEngine();
-        SwingUtilities.invokeLater(() -> {
-            myView = new CalculatorView();
-        });
+        myView = new CalculatorView();
+        myListener = new CustomListener();
+        myView.setButtonListener(myListener);
     }
 
-    static class CalculatorButtonListener implements ActionListener {
-
+    private class CustomListener implements ActionListener {
         /**
          * Invoked when an action occurs.
          *
@@ -26,3 +26,4 @@ public class CalculatorController {
         }
     }
 }
+
