@@ -11,6 +11,7 @@ public class CalculatorController {
         myEngine = new CalculatorEngine();
         myView = new CalculatorView();
         myListener = new CustomListener();
+
         myView.setButtonListener(myListener);
     }
 

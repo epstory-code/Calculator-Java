@@ -3,6 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * TODO
+ *
+ * - Extend the view to include the converter
+ * - Extend to incorporate different views for scientific, converter, & other
+ * calculator features
+ *
+ * */
 public class CalculatorView extends JFrame {
 
     private ActionListener btnLstnr;
@@ -11,6 +19,10 @@ public class CalculatorView extends JFrame {
     private JScrollPane scrollPane;
     private String[] btnTextArray = {"DEL","AC","+/-","%","7","8","9","X",
             "4","5","6","-","1","2","3","+",".","0","=", "/"};
+
+    /**
+     * Boilerplate constructor to create view
+     * */
 
     public CalculatorView() {
 
@@ -24,6 +36,12 @@ public class CalculatorView extends JFrame {
         setSize(500, 520);
     }
 
+
+    /**
+     * Custom constructor.
+     * Can be modified anyway you see fit.
+     * You can also change the parameters as you see fit.
+     * */
     public CalculatorView (int width, int height){
         setSize(width, height);
     }
@@ -85,6 +103,7 @@ public class CalculatorView extends JFrame {
         addComponentsToPane();
     }
 
+    /* Main method to run and view boiler plate code */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
            CalculatorView myCalculatorView = new CalculatorView();
