@@ -16,7 +16,7 @@ public class CalculatorController {
         myView.setButtonListener(myListener);
     }
 
-    private class CustomListener implements ActionListener {
+    private class  CustomListener implements ActionListener {
         /**
          * Invoked when an action occurs.
          *

@@ -32,8 +32,8 @@ public class CalculatorView extends JFrame {
 
         setTitle("Calculator");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setVisible(true);
         setSize(500, 520);
+        setVisible(true);
     }
 
 
@@ -66,7 +66,7 @@ public class CalculatorView extends JFrame {
         //Create a text pane to act as a display for the calculator
         displayPane = new JTextPane();
         displayPane.setFont(new Font("Arial", Font.TRUETYPE_FONT, 40));
-        displayPane.setEditable(true);
+        displayPane.setEditable(false);
         displayPane.setOpaque(false);
         displayPane.setBackground(Color.BLACK);
 
