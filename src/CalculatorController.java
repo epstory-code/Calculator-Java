@@ -122,7 +122,7 @@ public class CalculatorController {
                     myView.displayPane.setText(message);
                     break;
 
-                case ".":
+                case  ".":
                     message = ".";
                     myView.displayPane.setText(message);
                     break;
