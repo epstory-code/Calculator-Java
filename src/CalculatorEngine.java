@@ -1,5 +1,5 @@
 /**
- * CLass to implement functionality of calculator.
+ * Class to implement functionality of calculator.
  *
  * */
 public class CalculatorEngine {
@@ -43,7 +43,7 @@ public class CalculatorEngine {
     }
 
     public String updateExpression() {
-
+    return "";
     }
 
     public void evaluateExpression(){}
