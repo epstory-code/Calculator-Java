@@ -4,15 +4,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CalculatorController {
-    private CalculatorView myView;
+
+    // Declarations
     private CalculatorEngine myEngine;
+    private CalculatorView myView;
     private CustomListener myListener;
 
+    // constructor for CalculatorController
     public CalculatorController() {
+
+        // Creates instances of the classes Calculator Engine, Calculator View, and Custom Listener
         myEngine = new CalculatorEngine();
         myView = new CalculatorView();
         myListener = new CustomListener();
 
+        // Registers the listener with a component
         myView.setButtonListener(myListener);
     }
 
