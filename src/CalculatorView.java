@@ -70,9 +70,11 @@ public class CalculatorView extends JFrame {
         displayPane.setOpaque(false);
         displayPane.setBackground(Color.BLACK);
 
+        //Creates a scroll pane inside the text pane to act as a display for the calculator
         scrollPane = new JScrollPane(displayPane);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        //Adds the scroll pane (and text pane) to panel
         panel.add(scrollPane, gbc);
 
         // Create an empty label for spacing purposes
