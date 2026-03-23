@@ -43,7 +43,7 @@ public class CalculatorEngine {
     }
 
     public String updateExpression() {
-
+        return "";
     }
 
     public void evaluateExpression(){}
