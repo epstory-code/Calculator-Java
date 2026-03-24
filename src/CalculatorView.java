@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
  * calculator features
  *
  * */
+
 public class CalculatorView extends JFrame {
 
     private ActionListener btnLstnr;
@@ -24,15 +25,17 @@ public class CalculatorView extends JFrame {
      * Boilerplate constructor to create view
      * */
 
+    // constructor for CalculatorView
     public CalculatorView() {
 
         SwingUtilities.invokeLater(() -> {
+            // Calls function to add components to pane
             createAndShowGUI();
         });
 
         setTitle("Calculator");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 520);
+        setSize(500, 550);
         setVisible(true);
     }
 
@@ -42,6 +45,7 @@ public class CalculatorView extends JFrame {
      * Can be modified anyway you see fit.
      * You can also change the parameters as you see fit.
      * */
+
     public CalculatorView (int width, int height){
         setSize(width, height);
     }
@@ -50,7 +54,7 @@ public class CalculatorView extends JFrame {
         btnLstnr = lstnr;
     }
 
-    private void addComponentsToPane(){
+    private void addComponentsToPane() {
         // Create main panel to contain display & buttons
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -70,9 +74,11 @@ public class CalculatorView extends JFrame {
         displayPane.setOpaque(false);
         displayPane.setBackground(Color.BLACK);
 
+        //Creates a scroll pane inside the text pane to act as a display for the calculator
         scrollPane = new JScrollPane(displayPane);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        //Adds the scroll pane (and text pane) to panel
         panel.add(scrollPane, gbc);
 
         // Create an empty label for spacing purposes
@@ -94,16 +100,21 @@ public class CalculatorView extends JFrame {
             button.addActionListener(btnLstnr);
             btnPanel.add(button);
         }
+
+        //Adds button panel to the main panel
         panel.add(btnPanel, gbc);
 
+        //Adds the panel to the view
         add(panel);
-
-
     }
 
-
+    // Function to add components to pane
     public void createAndShowGUI(){
         addComponentsToPane();
+    }
+
+    public void displayText(String text) {
+        displayPane.setText(text);
     }
 
     /* Main method to run and view boiler plate code */
