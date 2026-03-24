@@ -11,11 +11,12 @@ import java.awt.event.ActionListener;
  * calculator features
  *
  * */
+
 public class CalculatorView extends JFrame {
 
     private ActionListener btnLstnr;
     private JPanel panel, btnPanel;
-    public JTextPane displayPane;
+    private JTextPane displayPane;
     private JScrollPane scrollPane;
     private String[] btnTextArray = {"DEL","AC","+/-","%","7","8","9","X",
             "4","5","6","-","1","2","3","+",".","0","=", "/"};
@@ -24,15 +25,17 @@ public class CalculatorView extends JFrame {
      * Boilerplate constructor to create view
      * */
 
+    // constructor for CalculatorView
     public CalculatorView() {
 
         SwingUtilities.invokeLater(() -> {
+            // Calls function to add components to pane
             createAndShowGUI();
         });
 
         setTitle("Calculator");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 520);
+        setSize(500, 550);
         setVisible(true);
     }
 
@@ -42,6 +45,7 @@ public class CalculatorView extends JFrame {
      * Can be modified anyway you see fit.
      * You can also change the parameters as you see fit.
      * */
+
     public CalculatorView (int width, int height){
         setSize(width, height);
     }
@@ -50,7 +54,7 @@ public class CalculatorView extends JFrame {
         btnLstnr = lstnr;
     }
 
-    private void addComponentsToPane(){
+    private void addComponentsToPane() {
         // Create main panel to contain display & buttons
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -96,11 +100,15 @@ public class CalculatorView extends JFrame {
             button.addActionListener(btnLstnr);
             btnPanel.add(button);
         }
+
+        //Adds button panel to the main panel
         panel.add(btnPanel, gbc);
 
+        //Adds the panel to the view
         add(panel);
     }
 
+    // Function to add components to pane
     public void createAndShowGUI(){
         addComponentsToPane();
     }

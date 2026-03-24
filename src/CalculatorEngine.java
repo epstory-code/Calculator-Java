@@ -6,8 +6,8 @@ public class CalculatorEngine {
 
     private double result = 0;
 
+    // Constructor for Calculator Engine
     public CalculatorEngine (){
-
     }
 
     /*Methods to implement math operations*/
