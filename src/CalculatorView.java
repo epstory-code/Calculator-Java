@@ -115,8 +115,12 @@ public class CalculatorView extends JFrame {
     public void updateDisplay(String text) {
         // assigns the string previousText the text in displayPane
         String previousText = displayPane.getText();
-        // updates the display to include previousText and the text passed in as a parameter
-        displayPane.setText(previousText + text);
+
+        // assigns displayText previousText and the text passed in as a parameter
+        String displayText = previousText + text;
+
+        // updates the display
+        displayPane.setText(displayText);
     }
 
     /* Main method to run and view boiler plate code */
