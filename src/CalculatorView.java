@@ -113,6 +113,10 @@ public class CalculatorView extends JFrame {
         addComponentsToPane();
     }
 
+    public void displayText(String text) {
+        displayPane.setText(text);
+    }
+
     /* Main method to run and view boiler plate code */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
