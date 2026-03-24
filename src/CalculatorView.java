@@ -18,8 +18,8 @@ public class CalculatorView extends JFrame {
     private JPanel panel, btnPanel;
     private JTextPane displayPane;
     private JScrollPane scrollPane;
-    private String[] btnTextArray = {"DEL","AC","+/-","%","7","8","9","X",
-            "4","5","6","-","1","2","3","+",".","0","=", "/"};
+    private String[] btnTextArray = {"DEL","AC","+/-","%","1","2","3","*",
+            "4","5","6","-","7","8","9","+",".","0","=", "/"};
 
     /**
      * Boilerplate constructor to create view
@@ -69,7 +69,7 @@ public class CalculatorView extends JFrame {
 
         //Create a text pane to act as a display for the calculator
         displayPane = new JTextPane();
-        displayPane.setFont(new Font("Arial", Font.TRUETYPE_FONT, 40));
+        displayPane.setFont(new Font("Arial", Font.PLAIN, 25));
         displayPane.setEditable(false);
         displayPane.setOpaque(false);
         displayPane.setBackground(Color.BLACK);
@@ -114,7 +114,8 @@ public class CalculatorView extends JFrame {
     }
 
     public void displayText(String text) {
-        displayPane.setText(text);
+        String previousText = displayPane.getText();
+        displayPane.setText(previousText + text);
     }
 
     /* Main method to run and view boiler plate code */
