@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
@@ -113,8 +112,10 @@ public class CalculatorView extends JFrame {
         addComponentsToPane();
     }
 
-    public void displayText(String text) {
+    public void updateDisplay(String text) {
+        // assigns the string previousText the text in displayPane
         String previousText = displayPane.getText();
+        // updates the display to include previousText and the text passed in as a parameter
         displayPane.setText(previousText + text);
     }
 

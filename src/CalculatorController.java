@@ -1,5 +1,3 @@
-import javax.swing.*;
-import javax.swing.text.Document;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,7 +29,7 @@ public class CalculatorController {
         @Override
         public void actionPerformed(ActionEvent e) {
             String actionSource = e.getActionCommand();
-            myView.displayText(actionSource);
+            myView.updateDisplay(actionSource);
         }
     }
 }
