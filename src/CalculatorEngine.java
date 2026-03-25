@@ -44,5 +44,12 @@ public class CalculatorEngine {
         return "";
     }
 
-    public void evaluateExpression(){}
+    // Function to separate the expression by the operators
+    public void evaluateExpression (String expression) {
+
+        // String to store the regular expression
+        String regex = "\\*\\/\\+\\-";
+        // Splits the expression into an array of strings based on the operators in regex
+        String [] array = expression.split(regex);
+    }
 }

@@ -18,7 +18,7 @@ public class CalculatorView extends JFrame {
     private JTextPane displayPane;
     private JScrollPane scrollPane;
     private String[] btnTextArray = {"DEL","AC","+/-","%","1","2","3","*",
-            "4","5","6","-","7","8","9","+",".","0","=", "/"};
+            "4","5","6","/","7","8","9","+",".","0","=", "-"};
 
     /**
      * Boilerplate constructor to create view
@@ -128,6 +128,10 @@ public class CalculatorView extends JFrame {
     public void allClearDisplay() {
         //sets text to "" to make it blank
         displayPane.setText("");
+    }
+
+    public String getDisplayText() {
+        return displayPane.getText();
     }
 
     /* Main method to run and view boiler plate code */

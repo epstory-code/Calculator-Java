@@ -34,16 +34,20 @@ public class CalculatorController {
                 case "AC":
                     // Calls clearing function
                     myView.allClearDisplay();
+                    break;
 
                 case "DEL":
                     // Here we can take the last character in the string and remove it, then update the display with the new string
+                    break;
 
                 case "+/-":
                     // Here we can take the last object in the list, parse it into an integer, multiply it by -1, then turn it back into a string
+                    break;
 
                 case "=":
                     // Evaluates expression
-                    myEngine.evaluateExpression();
+                    myEngine.evaluateExpression(myView.getDisplayText());
+                    break;
             }
         }
     }
