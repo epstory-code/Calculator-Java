@@ -30,6 +30,21 @@ public class CalculatorController {
         public void actionPerformed(ActionEvent e) {
             String actionSource = e.getActionCommand();
             myView.updateDisplay(actionSource);
+            switch (actionSource) {
+                case "AC":
+                    // Calls clearing function
+                    myView.allClearDisplay();
+
+                case "DEL":
+                    // Here we can take the last character in the string and remove it, then update the display with the new string
+
+                case "+/-":
+                    // Here we can take the last object in the list, parse it into an integer, multiply it by -1, then turn it back into a string
+
+                case "=":
+                    // Evaluates expression
+                    myEngine.evaluateExpression();
+            }
         }
     }
 }

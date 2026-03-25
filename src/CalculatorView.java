@@ -112,6 +112,7 @@ public class CalculatorView extends JFrame {
         addComponentsToPane();
     }
 
+    // Updates display every button press
     public void updateDisplay(String text) {
         // assigns the string previousText the text in displayPane
         String previousText = displayPane.getText();
@@ -121,6 +122,12 @@ public class CalculatorView extends JFrame {
 
         // updates the display
         displayPane.setText(displayText);
+    }
+
+    // Clears display for when AC is pressed
+    public void allClearDisplay() {
+        //sets text to "" to make it blank
+        displayPane.setText("");
     }
 
     /* Main method to run and view boiler plate code */
