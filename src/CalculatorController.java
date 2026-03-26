@@ -29,7 +29,6 @@ public class CalculatorController {
         @Override
         public void actionPerformed(ActionEvent e) {
             String actionSource = e.getActionCommand();
-            myView.updateDisplay(actionSource);
             switch (actionSource) {
                 case "AC":
                     // Calls clearing function
@@ -48,6 +47,9 @@ public class CalculatorController {
                     // Evaluates expression
                     myEngine.evaluateExpression(myView.getDisplayText());
                     break;
+
+                case "1","2","3","4","5","6","7","8","9","0","-","+","/","*":
+                    myView.updateDisplay(actionSource);
             }
         }
     }
