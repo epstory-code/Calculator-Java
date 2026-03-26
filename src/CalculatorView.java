@@ -130,6 +130,14 @@ public class CalculatorView extends JFrame {
         displayPane.setText("");
     }
 
+    public void delChar() {
+        String delString = getDisplayText();
+        if (delString != null && delString.length() > 0) {
+            delString = delString.substring(0, delString.length() - 1);
+            displayPane.setText(delString);
+        }
+    }
+
     public String getDisplayText() {
         return displayPane.getText();
     }

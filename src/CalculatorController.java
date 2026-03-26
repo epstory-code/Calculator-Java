@@ -37,6 +37,7 @@ public class CalculatorController {
 
                 case "DEL":
                     // Here we can take the last character in the string and remove it, then update the display with the new string
+                    myView.delChar();
                     break;
 
                 case "+/-":
