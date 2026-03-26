@@ -1,3 +1,5 @@
+import java.util.regex.Pattern;
+
 /**
  * CLass to implement functionality of calculator.
  *
@@ -48,8 +50,11 @@ public class CalculatorEngine {
     public void evaluateExpression (String expression) {
 
         // String to store the regular expression
-        String regex = "\\*\\/\\+\\-";
+        //String regex = "*/+-";
         // Splits the expression into an array of strings based on the operators in regex
-        String [] array = expression.split(regex);
+        String [] array = expression.split("[*/+-]");
+        for (String s: array) {
+            System.out.println(s);
+      }
     }
 }
