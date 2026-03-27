@@ -112,6 +112,10 @@ public class CalculatorView extends JFrame {
         addComponentsToPane();
     }
 
+    public String getDisplayText() {
+        return displayPane.getText();
+    }
+
     // Updates display every button press
     public void updateDisplay(String text) {
         // assigns the string previousText the text in displayPane
@@ -130,16 +134,14 @@ public class CalculatorView extends JFrame {
         displayPane.setText("");
     }
 
+
+    // Deletes the last character being displayed
     public void delChar() {
         String delString = getDisplayText();
-        if (delString != null && delString.length() > 0) {
+        if (delString.length() > 0) {
             delString = delString.substring(0, delString.length() - 1);
             displayPane.setText(delString);
         }
-    }
-
-    public String getDisplayText() {
-        return displayPane.getText();
     }
 
     /* Main method to run and view boiler plate code */

@@ -31,17 +31,21 @@ public class CalculatorController {
             String actionSource = e.getActionCommand();
             switch (actionSource) {
                 case "AC":
-                    // Calls clearing function
+                    // Calls function allClearDisplay from CalculatorView.java
                     myView.allClearDisplay();
                     break;
 
                 case "DEL":
-                    // Here we can take the last character in the string and remove it, then update the display with the new string
+                    // Removes the last character of the string being displayed and updates the display
                     myView.delChar();
                     break;
 
                 case "+/-":
-                    // Here we can take the last object in the list, parse it into an integer, multiply it by -1, then turn it back into a string
+                    // Here we can take the last object in the list,
+                    // parse it into an integer,
+                    // multiply it by -1,
+                    // then turn it back into a string
+
                     break;
 
                 case "=":
@@ -49,7 +53,7 @@ public class CalculatorController {
                     myEngine.evaluateExpression(myView.getDisplayText());
                     break;
 
-                case "1","2","3","4","5","6","7","8","9","0","-","+","/","*":
+                case "1","2","3","4","5","6","7","8","9","0","-","+","/","*", ".":
                     myView.updateDisplay(actionSource);
             }
         }
