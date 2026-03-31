@@ -116,7 +116,12 @@ public class CalculatorView extends JFrame {
         return displayPane.getText();
     }
 
+    public void setDisplayText(String text) {
+        displayPane.setText(text);
+    }
+
     // Updates display every button press
+    // Does not set the display. It adds to the display.
     public void updateDisplay(String text) {
         // assigns the string previousText the text in displayPane
         String previousText = displayPane.getText();

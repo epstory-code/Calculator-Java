@@ -58,10 +58,9 @@ public class CalculatorController {
                     DecimalFormat df = new DecimalFormat("#.##########");
                     lastNum = String.valueOf(df.format(lastDouble));
                     //Replaces the original number with the number with a changed sign
-                    String textWithSignChanged = myView.getDisplayText().replace(arrayOfNum[arrayOfNum.length-1],lastNum);
+                    String textWithSignChanged = myEngine.replaceLast(myView.getDisplayText(), arrayOfNum[arrayOfNum.length-1], lastNum);
                     //Clears and updates the display with the sign changed
-                    myView.allClearDisplay();
-                    myView.updateDisplay(textWithSignChanged);
+                    myView.setDisplayText(textWithSignChanged);
 
 
                     break;

@@ -42,6 +42,18 @@ public class CalculatorEngine {
         return result;
     }
 
+    //Function to replace the last occurrence of one string in another string
+    public String replaceLast(String string, String substring, String replacementString) {
+        ;
+        int index = string.lastIndexOf(substring);
+
+        if (index == -1) {
+            return string;
+        }
+
+        return string.substring(0, index) + replacementString + string.substring(index + substring.length());
+    }
+
     public String updateExpression() {
         return "";
     }
