@@ -6,7 +6,8 @@ import java.util.regex.Pattern;
 /**
  * CLass to implement functionality of calculator.
  *
- * */
+ *
+ */
 public class CalculatorEngine {
 
     private double result = 0;
@@ -35,7 +36,7 @@ public class CalculatorEngine {
         return 0.0;
     }
 
-    public double modulus (double a, double b) {
+    public double modulus(double a, double b) {
         result = a * b;
         return result;
     }
@@ -62,14 +63,9 @@ public class CalculatorEngine {
     }
 
 
-
-
-
-
-
     // Function to separate the expression by the operators
-    public String[] evaluateExpression (String expression) {
-        String str = "expression";
+    public String[] evaluateExpression(String expression) {
+        String str = expression;
         String stringResult = "";
         String delimiters = "[+/*-]";
         String mult = "*";
@@ -202,6 +198,11 @@ public class CalculatorEngine {
                 }
             }
         }
-    return new String[]{stringResult};
+        double doubleResult = Double.parseDouble(stringResult);
+        if (doubleResult % 1 == 0) {
+            int newResult = (int) doubleResult;
+            stringResult = Integer.toString(newResult);
+        }
+        return new String[]{stringResult};
     }
 }

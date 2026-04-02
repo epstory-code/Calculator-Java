@@ -1,6 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class CalculatorController {
 
@@ -19,6 +20,8 @@ public class CalculatorController {
 
         // Registers the listener with a component
         myView.setButtonListener(myListener);
+
+
     }
 
     private class CustomListener implements ActionListener {
@@ -32,12 +35,16 @@ public class CalculatorController {
             String actionSource = e.getActionCommand();
             switch (actionSource) {
                 case "1","2","3","4","5","6","7","8","9","0","-","+","/","*", ".":
+                    if (myView.getDisplayText().equals("0")) {
+                        myView.allClearDisplay();
+                    }
                     myView.updateDisplay(actionSource);
                     break;
 
                 case "AC":
                     // Calls function allClearDisplay from CalculatorView.java
                     myView.allClearDisplay();
+                    myView.setDisplayText("0");
                     break;
 
                 case "DEL":
@@ -67,8 +74,12 @@ public class CalculatorController {
 
                 case "=":
                     // Evaluates expression
-                    myEngine.evaluateExpression(myView.getDisplayText());
-                    break;
+                    if (!(myView.getDisplayText() == "0")) {
+                        String[] result = myEngine.evaluateExpression(myView.getDisplayText());
+                        String stringResult = result[0];
+                        myView.setDisplayText(stringResult);
+                        break;
+                    }
             }
         }
     }
