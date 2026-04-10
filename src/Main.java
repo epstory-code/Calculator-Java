@@ -1,6 +1,4 @@
-public class Main{
+void main() {
     // Creates an instance of the CalculatorController class
-    public static void main (String[] args){
-        CalculatorController controller = new CalculatorController();
-    }
+    new CalculatorController();
 }

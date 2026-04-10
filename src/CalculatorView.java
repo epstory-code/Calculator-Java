@@ -2,154 +2,93 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-/**
- * TODO
- *
- * - Extend the view to include the converter
- * - Extend to incorporate different views for scientific, converter, & other
- * calculator features
- *
- * */
-
 public class CalculatorView extends JFrame {
 
-    private ActionListener btnLstnr;
-    private JPanel panel, btnPanel;
-    private JTextPane displayPane;
-    private JScrollPane scrollPane;
-    private String[] btnTextArray = {"DEL","AC","+/-","%","1","2","3","*",
-            "4","5","6","/","7","8","9","+",".","0","=", "-"};
+    //Constants to later be stored in the array comboBoxItems
+    private static final String CALCULATOR_PANEl = "Calculator";
+    private static final String TIP_CALCULATOR_PANEL = "Tip Calculator";
+    private static final String CONVERTER = "Unit Converter";
+    private static final String HISTORY = "History";
 
-    /**
-     * Boilerplate constructor to create view
-     * */
 
-    // constructor for CalculatorView
+    public static CalculatorPanel calculatorPanel = new CalculatorPanel(); // Creates an instance of the class CalculatorPanel.java
+    private ActionListener btnLstnr; // An action listener to later be used for the card layout
+    private JPanel comboBoxPane;
+    private JComboBox<String> cb;
+    private String[] comboBoxItems = {CALCULATOR_PANEl, TIP_CALCULATOR_PANEL, CONVERTER, HISTORY};
+    private JPanel cards;
+
+    // Constructor for CalculatorView
     public CalculatorView() {
 
-        SwingUtilities.invokeLater(() -> {
-            // Calls function to add components to pane
-            createAndShowGUI();
-        });
+        // Calls function to add the card layout to the pane
+        SwingUtilities.invokeLater(this::addCardLayoutToPanel);
 
+        // Initialize and display the calculator GUI JFrame
         setTitle("Calculator");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 550);
         setVisible(true);
     }
 
-
-    /**
-     * Custom constructor.
-     * Can be modified anyway you see fit.
-     * You can also change the parameters as you see fit.
-     * */
-
-    public CalculatorView (int width, int height){
-        setSize(width, height);
+    // Currently calls corresponding function in CalculatorPanel.java
+    public void setButtonListener(ActionListener lstnr) {
+        calculatorPanel.setButtonListener(lstnr);
     }
 
-    public void setButtonListener(ActionListener lstnr){
-        btnLstnr = lstnr;
-    }
+    public void addCardLayoutToPanel() {
 
-    private void addComponentsToPane() {
-        // Create main panel to contain display & buttons
-        panel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        // Initializes a panel for the combo box
+        comboBoxPane = new JPanel();
+        // Initializes the combo box with the options in the list ComboBoxItems
+        cb =  new JComboBox<>(comboBoxItems);
+        // Adds specifications to the combo box
+        cb.setEditable(false);
+        cb.addActionListener(btnLstnr);
+        // Adds the combo box to the combo box pane
+        comboBoxPane.add(cb);
+        // Initializes a JPanel with a card layout
+        cards = new JPanel (new CardLayout());
+        cards.add(calculatorPanel, CALCULATOR_PANEl);
 
-        /* === ROW 0: TEXT FIELD FOR CALCULATOR === */
-        gbc.gridy = 0;
-        gbc.gridx = 0;
-        gbc.gridheight = 3;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.fill = GridBagConstraints.BOTH;
-
-        //Create a text pane to act as a display for the calculator
-        displayPane = new JTextPane();
-        displayPane.setFont(new Font("Arial", Font.PLAIN, 25));
-        displayPane.setEditable(false);
-        displayPane.setOpaque(false);
-        displayPane.setBackground(Color.BLACK);
-
-        //Creates a scroll pane inside the text pane to act as a display for the calculator
-        scrollPane = new JScrollPane(displayPane);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        //Adds the scroll pane (and text pane) to panel
-        panel.add(scrollPane, gbc);
-
-        // Create an empty label for spacing purposes
-        JLabel lblNewLabel = new JLabel();
-        panel.add(lblNewLabel, gbc);
-
-        /* === ROW 2: Button Pad === */
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridy = 3;
-        gbc.gridx = 0;
-        gbc.gridheight = 3;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.05;
-
-        // Create button grid and add buttons
-        btnPanel = new JPanel(new GridLayout(5,5,0,0));
-        for (String text : btnTextArray) {
-            JButton button = new JButton(text);
-            button.addActionListener(btnLstnr);
-            btnPanel.add(button);
-        }
-
-        //Adds button panel to the main panel
-        panel.add(btnPanel, gbc);
-
-        //Adds the panel to the view
-        add(panel);
-    }
-
-    // Function to add components to pane
-    public void createAndShowGUI(){
-        addComponentsToPane();
+        add(comboBoxPane, BorderLayout.PAGE_START);
+        add(cards, BorderLayout.CENTER);
     }
 
     public String getDisplayText() {
-        return displayPane.getText();
+        return calculatorPanel.getDisplayText();
     }
 
     public void setDisplayText(String text) {
-        displayPane.setText(text);
+        calculatorPanel.setDisplayText(text);
     }
 
-    // Updates display every button press
     // Does not set the display. It adds to the display.
     public void updateDisplay(String text) {
-        // assigns the string previousText the text in displayPane
-        String previousText = displayPane.getText();
-
-        // assigns displayText previousText and the text passed in as a parameter
+        // Assigns the string previousText the text in displayPane
+        String previousText = getDisplayText();
+        // Assigns displayText previousText and the text passed in as a parameter
         String displayText = previousText + text;
 
-        // updates the display
-        displayPane.setText(displayText);
+        // Updates the display
+        setDisplayText(displayText);
     }
 
-    // Clears display for when AC is pressed
+    // Sets text to "" to make it blank
     public void allClearDisplay() {
-        //sets text to "" to make it blank
-        displayPane.setText("");
+        setDisplayText("");
     }
-
 
     // Deletes the last character being displayed
     public void delChar() {
         String delString = getDisplayText();
-        if (delString.length() > 0) {
+        if (!delString.isEmpty()) {
             delString = delString.substring(0, delString.length() - 1);
-            displayPane.setText(delString);
+            setDisplayText(delString);
         }
     }
 
-    /* Main method to run and view boiler plate code */
+    /* Main method to run and view boilerplate code */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
            CalculatorView myCalculatorView = new CalculatorView();

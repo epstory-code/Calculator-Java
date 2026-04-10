@@ -1,14 +1,6 @@
-import java.util.regex.Pattern;
-
-/**
- * CLass to implement functionality of calculator.
- *
- * */
 public class CalculatorEngine {
 
     private double result = 0;
-
-    // Constructor for Calculator Engine
 
     /*Methods to implement math operations*/
 
@@ -42,15 +34,16 @@ public class CalculatorEngine {
         return result;
     }
 
-    //Function to replace the last occurrence of one string in another string
+    // Function to replace the last occurrence of a substring in another string
     public String replaceLast(String string, String substring, String replacementString) {
-        ;
-        int index = string.lastIndexOf(substring);
 
+        // Gets the index of the last occurrence of the substring
+        int index = string.lastIndexOf(substring);
+        // If the substring is not found (lastIndexOf returns -1), the original string is simply returned
         if (index == -1) {
             return string;
         }
-
+        // Pieces together the different parts of the string and returns it
         return string.substring(0, index) + replacementString + string.substring(index + substring.length());
     }
 
@@ -61,11 +54,7 @@ public class CalculatorEngine {
     // Function to separate the expression by the operators
     public String[] evaluateExpression (String expression) {
 
-        // String to store the regular expression
-        //String regex = "*/+-";
-        // Splits the expression into an array of strings based on the operators in regex
-        String [] arrayOfNum = expression.split("[*/+-]");
-
-        return arrayOfNum;
+        // Splits the expression into an array of strings based on the regex operators
+        return expression.split("[*/+-]");
       }
 }
