@@ -48,6 +48,7 @@ public class CalculatorPanel extends JPanel {
         displayPane.setEditable(false);
         displayPane.setOpaque(false);
         displayPane.setBackground(Color.BLACK);
+        displayPane.setText("0");
 
         // Creates a scroll pane inside the text pane to act as a display for the calculator
         scrollPane = new JScrollPane(displayPane);
