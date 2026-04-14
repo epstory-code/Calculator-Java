@@ -14,7 +14,7 @@ public class CalculatorPanel extends JPanel {
     // Constructor for SimpleCalculatorPanel
     public CalculatorPanel() {
         //Calls function to add components to the calculator panel
-        buildPane();
+        buildPanel();
     }
 
     public void setButtonListener(ActionListener lstnr){
@@ -29,7 +29,7 @@ public class CalculatorPanel extends JPanel {
         }
     }
 
-    public void buildPane() {
+    public void buildPanel() {
         // Creates main panel to contain display & buttons
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();

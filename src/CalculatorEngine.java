@@ -62,17 +62,18 @@ public class CalculatorEngine {
         String stringResult = "";
         String delimiters = "[+/*-]";
         String mult = "*";
-        String divi = "/";
-        String addi = "+";
-        String subt = "-";
+        String div = "/";
+        String add = "+";
+        String sub = "-";
         int index = 0;
+
         String[] separated = str.split("(?<=" + delimiters + ")|(?=" + delimiters + ")");
         List<String> list = new ArrayList<>(Arrays.asList(separated));
         System.out.println(list);
         System.out.println("printing out integers into doubles...");
         for (String x : list) {
             index++;
-            if (!(x.equals(mult) | x.equals(divi) | x.equals(addi) | x.equals(subt))) {
+            if (!(x.equals(mult) | x.equals(div) | x.equals(add) | x.equals(sub))) {
                 double newX = Double.parseDouble(x);
                 System.out.println(newX);
                 list.set(index - 1, String.valueOf(newX));
@@ -113,12 +114,12 @@ public class CalculatorEngine {
                 continue;
 
 
-            } else if (list.contains(divi)) {
+            } else if (list.contains(div)) {
                 System.out.println("found / in list");
                 index = 0;
                 for (String item : list) {
                     System.out.println(item);
-                    if (!item.equals(divi)) {
+                    if (!item.equals(div)) {
                         index++;
                     } else {
                         System.out.println("^ here it is");
