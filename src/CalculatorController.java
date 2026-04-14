@@ -50,6 +50,9 @@ public class CalculatorController {
                     // Calls function delChar from CalculatorView.java and removes the last character of the string being displayed and updates the display
                     if (!Objects.equals(myView.getDisplayText(), "0")) {
                         myView.delChar();
+                        if (Objects.equals(myView.getDisplayText(), "")) {
+                            myView.setDisplayText("0");
+                        }
                     }
                     break;
 
