@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 
 public class CalculatorView extends JFrame {
 
@@ -48,11 +49,23 @@ public class CalculatorView extends JFrame {
         cb.addActionListener(btnLstnr);
         // Adds the combo box to the combo box pane
         comboBoxPane.add(cb);
+        //Creates a card layout to use later
+        CardLayout cardLayout = new CardLayout();
         // Initializes a JPanel with a card layout
-        cards = new JPanel (new CardLayout());
-        cards.add(calculatorPanel, CALCULATOR_PANEl);
-        //cards.add(tipCalculatorPanel, TIP_CALCULATOR_PANEL);
+        cards = new JPanel (cardLayout);
 
+        //Adds the panels to the JPanel cards
+        cards.add(calculatorPanel, CALCULATOR_PANEl);
+        cards.add(tipCalculatorPanel, TIP_CALCULATOR_PANEL);
+
+        //Adds an item listener to the combo box
+        cb.addItemListener(e -> {
+            if  (e.getStateChange() == ItemEvent.SELECTED) {
+                cardLayout.show(cards, (String) e.getItem());
+            }
+        });
+
+        //Adds the comboBoxPane and the JPanel cards to the JFrame
         add(comboBoxPane, BorderLayout.PAGE_START);
         add(cards, BorderLayout.CENTER);
     }
