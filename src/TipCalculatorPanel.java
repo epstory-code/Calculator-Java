@@ -9,7 +9,7 @@ public class TipCalculatorPanel extends JPanel {
 
     // Constructor for TipCalculatorView
     public TipCalculatorPanel() {
-
+        buildPanel();
     }
 
     public void buildPanel() {
@@ -31,7 +31,7 @@ public class TipCalculatorPanel extends JPanel {
         displayPane.setEditable(false);
         displayPane.setOpaque(false);
         displayPane.setBackground(Color.BLACK);
-        displayPane.setText("Hello, World!)");
+        displayPane.setText("Hello, World!");
 
         // Creates a scroll pane inside the text pane to act as a display for the calculator
         scrollPane = new JScrollPane(displayPane);
