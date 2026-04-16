@@ -196,6 +196,9 @@ public class CalculatorEngine {
         if (doubleResult % 1 == 0) {
             int newResult = (int) doubleResult;
             stringResult = Integer.toString(newResult);
+        if (stringResult == "NaN") {
+            stringResult = "Undefined";
+        }
         }
         return new String[]{stringResult};
     }

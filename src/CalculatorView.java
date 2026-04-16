@@ -14,6 +14,7 @@ public class CalculatorView extends JFrame {
 
     public static CalculatorPanel calculatorPanel = new CalculatorPanel(); // Creates an instance of the class CalculatorPanel.java
     public static TipCalculatorPanel tipCalculatorPanel = new TipCalculatorPanel();
+    public static UnitConverterPanel unitConverterPanel = new UnitConverterPanel();
     private ActionListener btnLstnr; // An action listener to later be used for the card layout
     private JPanel comboBoxPane;
     private JComboBox<String> cb;
@@ -57,6 +58,7 @@ public class CalculatorView extends JFrame {
         //Adds the panels to the JPanel cards
         cards.add(calculatorPanel, CALCULATOR_PANEl);
         cards.add(tipCalculatorPanel, TIP_CALCULATOR_PANEL);
+        cards.add(unitConverterPanel, CONVERTER);
 
         //Adds an item listener to the combo box
         cb.addItemListener(e -> {
