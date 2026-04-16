@@ -81,7 +81,7 @@ public class CalculatorPanel extends JPanel {
 
         // Adds the main panel to calculator panel
         this.setLayout(new BorderLayout());
-        this.add(panel, BorderLayout. CENTER);
+        this.add(panel, BorderLayout.CENTER);
     }
 
     public String getDisplayText() {
