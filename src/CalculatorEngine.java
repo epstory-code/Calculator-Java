@@ -15,6 +15,7 @@ public class CalculatorEngine {
     public String[] evaluateExpression(String expression) {
         String str = expression;
         String stringResult = "";
+        String error = "Error";
         String mult = "*";
         String div = "/";
         String rem = "%";
@@ -29,10 +30,15 @@ public class CalculatorEngine {
         System.out.println("printing out integers into doubles...");
         for (String x : list) {
             index++;
-            if (!(x.equals(mult) | x.equals(div) | x.equals(add) | x.equals(sub) | x.equals(rem))) {
+            if (!(x.equals(mult) | x.equals(div) | x.equals(add) | x.equals(sub) | x.equals(rem) | x.equals("Undefined"))) {
                 double newX = Double.parseDouble(x);
                 System.out.println(newX);
                 list.set(index - 1, String.valueOf(newX));
+            }
+            if (x.equals("Undefined")){
+                list.clear();
+                list.add(error);
+                break;
             }
         }
 
@@ -181,13 +187,15 @@ public class CalculatorEngine {
                 }
             }
         }
-        double doubleResult = Double.parseDouble(stringResult);
-        if (doubleResult % 1 == 0) {
-            int newResult = (int) doubleResult;
-            stringResult = Integer.toString(newResult);
-        }
-        if (Objects.equals(stringResult, "NaN")) {
-            stringResult = "Undefined";
+        if (!Objects.equals(stringResult, error)) {
+            double doubleResult = Double.parseDouble(stringResult);
+            if (doubleResult % 1 == 0) {
+                int newResult = (int) doubleResult;
+                stringResult = Integer.toString(newResult);
+            }
+            if (Objects.equals(stringResult, "NaN")) {
+                stringResult = "Undefined";
+            }
         }
         return new String[]{stringResult};
     }
