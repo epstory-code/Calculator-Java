@@ -7,52 +7,6 @@ import java.util.regex.Pattern;
 public class CalculatorEngine {
 
     private double result = 0;
-
-    /*Methods to implement math operations*/
-
-    public double add(double a, double b) {
-        result = a + b;
-        return result;
-    }
-
-    public double subtract(double a, double b) {
-        result = a - b;
-        return result;
-    }
-
-    public double multiply(double a, double b) {
-        result = a * b;
-        return result;
-    }
-
-    public double divide(double a, double b) {
-        result = a / b;
-        return 0.0;
-    }
-
-    public double modulus (double a, double b) {
-        result = a * b;
-        return result;
-    }
-
-    public double switchSign(double a) {
-        result = a * -1;
-        return result;
-    }
-
-    // Function to replace the last occurrence of a substring in another string
-    public String replaceLast(String string, String substring, String replacementString) {
-
-        // Gets the index of the last occurrence of the substring
-        int index = string.lastIndexOf(substring);
-        // If the substring is not found (lastIndexOf returns -1), the original string is simply returned
-        if (index == -1) {
-            return string;
-        }
-        // Pieces together the different parts of the string and returns it
-        return string.substring(0, index) + replacementString + string.substring(index + substring.length());
-    }
-
     public String updateExpression() {
         return "";
     }
@@ -61,20 +15,21 @@ public class CalculatorEngine {
     public String[] evaluateExpression(String expression) {
         String str = expression;
         String stringResult = "";
-        String delimiters = "[+/*-]";
         String mult = "*";
         String div = "/";
+        String rem = "%";
         String add = "+";
         String sub = "-";
         int index = 0;
 
-        String[] separated = str.split("(?<=" + delimiters + ")|(?=" + delimiters + ")");
+        String[] separated = str.split("(?<=[+\\-*/%])|(?=[+\\-*/%])");
+        System.out.println(separated);
         List<String> list = new ArrayList<>(Arrays.asList(separated));
         System.out.println(list);
         System.out.println("printing out integers into doubles...");
         for (String x : list) {
             index++;
-            if (!(x.equals(mult) | x.equals(div) | x.equals(add) | x.equals(sub))) {
+            if (!(x.equals(mult) | x.equals(div) | x.equals(add) | x.equals(sub) | x.equals(rem))) {
                 double newX = Double.parseDouble(x);
                 System.out.println(newX);
                 list.set(index - 1, String.valueOf(newX));
@@ -144,6 +99,39 @@ public class CalculatorEngine {
                 System.out.println("the result is " + stringResult);
                 System.out.println(list);
                 continue;
+
+
+            }  else if (list.contains(rem)) {
+                System.out.println("found % in list");
+                index = 0;
+                for (String item : list) {
+                    System.out.println(item);
+                    if (!item.equals(rem)) {
+                        index++;
+                    } else {
+                        System.out.println("^ here it is");
+                        break;
+                    }
+                }
+                System.out.println("dividing...");
+                int aPlace = index - 1;
+                int bPlace = index + 1;
+                String a = list.get(aPlace);
+                String b = list.get(bPlace);
+                double newA = Double.parseDouble(a);
+                double doubleA = newA;
+                double newB = Double.parseDouble(b);
+                double doubleB = newB;
+                double doubleResult = doubleA % doubleB;
+                stringResult = Double.toString(doubleResult);
+                list.set(aPlace, stringResult);
+                list.remove(bPlace);
+                list.remove(index);
+                System.out.println("the result is " + stringResult);
+                System.out.println(list);
+                continue;
+
+
             }
 
             index = 0;
