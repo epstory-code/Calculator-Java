@@ -1,7 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.Objects;
 
 public class CalculatorController {
@@ -48,7 +47,7 @@ public class CalculatorController {
 
                 case "DEL":
                     // Calls function delChar from CalculatorView.java and removes the last character of the string being displayed and updates the display
-                    if (Objects.equals(myView.getDisplayText(), "Undefined") || Objects.equals(myView.getDisplayText(), "Infinity")) {
+                    if (Objects.equals(myView.getDisplayText(), "Undefined") || Objects.equals(myView.getDisplayText(), "Infinity") || Objects.equals(myView.getDisplayText(), "That button doesnt work child") || Objects.equals(myView.getDisplayText(), "Error")){
                         myView.allClearDisplay();
                         myView.setDisplayText("0");
                     }
@@ -62,22 +61,7 @@ public class CalculatorController {
                     break;
 
                 case "+/-":
-                    // Gets the array of numbers from the display
-                    String[] arrayOfNum = myEngine.evaluateExpression( myView.getDisplayText() );
-                    //Gets the last number from the array of numbers as a string
-                    int lastNumIndex = arrayOfNum.length-1;
-                    String lastNum = arrayOfNum[lastNumIndex];
-                    // Convert the number as a string to a double
-                    double lastDouble = Double.parseDouble(lastNum);
-                    // Multiplies the double by -1
-                    lastDouble = lastDouble * (-1);
-                    // Converts the double back to a string and removes any trailing zeros
-                    DecimalFormat df = new DecimalFormat("#.##########");
-                    lastNum = String.valueOf(df.format(lastDouble));
-                    //Replaces the original number with the number with a changed sign
-                    String textWithSignChanged = myEngine.replaceLast(myView.getDisplayText(), arrayOfNum[arrayOfNum.length-1], lastNum);
-                    //Sets the display to the text with the sign changed
-                    myView.setDisplayText(textWithSignChanged);
+                    myView.setDisplayText("That button doesnt work child");
                     break;
 
                 case "=":
