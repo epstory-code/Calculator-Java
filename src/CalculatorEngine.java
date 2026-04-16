@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class CalculatorEngine {
@@ -196,9 +197,9 @@ public class CalculatorEngine {
         if (doubleResult % 1 == 0) {
             int newResult = (int) doubleResult;
             stringResult = Integer.toString(newResult);
-        if (stringResult == "NaN") {
-            stringResult = "Undefined";
         }
+        if (Objects.equals(stringResult, "NaN")) {
+            stringResult = "Undefined";
         }
         return new String[]{stringResult};
     }
