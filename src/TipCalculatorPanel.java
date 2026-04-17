@@ -13,23 +13,23 @@ public class TipCalculatorPanel extends JPanel {
         buildPanel();
     }
 
-    public JLabel createLabel(JLabel labelName, String labelText) {
+    private JLabel createLabel(JLabel labelName, String labelText) {
         labelName = new JLabel(labelText);
         return labelName;
     }
 
-    public JTextField createField(JTextField fieldName, int size) {
+    private JTextField createField(JTextField fieldName, int size) {
         fieldName = new JTextField(size);
         return fieldName;
     }
 
-    public void addLabel(JPanel panel, JLabel labelName, int column, int row, GridBagConstraints gbc) {
+    private void addLabel(JPanel panel, JLabel labelName, int column, int row, GridBagConstraints gbc) {
         gbc.gridx = column;
         gbc.gridy = row;
         panel.add(labelName, gbc);
     }
 
-    public void addField (JPanel panel, JTextField fieldName, int column, int row, GridBagConstraints gbc) {
+    private void addField (JPanel panel, JTextField fieldName, int column, int row, GridBagConstraints gbc) {
         gbc.gridx = column;
         gbc.gridy = row;
         panel.add(fieldName, gbc);
@@ -49,7 +49,7 @@ public class TipCalculatorPanel extends JPanel {
         gbc.fill = GridBagConstraints.NONE;
     }
 
-    public void buildPanel() {
+    private void buildPanel() {
         // Sets the layout and grid bag constraints
         panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -113,6 +113,7 @@ public class TipCalculatorPanel extends JPanel {
         // Adds the main panel to tip calculator panel
         this.setLayout(new BorderLayout());
         this.add(panel, BorderLayout.CENTER);
+
         setLeftLabelGBC(gbc);
 
         calculateButton.addActionListener(e -> {

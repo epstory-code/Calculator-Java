@@ -34,8 +34,10 @@ public class CalculatorController {
 
             switch (actionSource) {
                 //Calls function updateDisplay from CalculatorView.java to add the number or symbol to the display
-                case "1","2","3","4","5","6","7","8","9","0","-","+","/","*","%",".":
-                    if (myView.getDisplayText().equals("0")) { myView.allClearDisplay(); }
+                case "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "+", "/", "*", "%", ".":
+                    if (myView.getDisplayText().equals("0")) {
+                        myView.allClearDisplay();
+                    }
                     myView.updateDisplay(actionSource);
                     break;
 
@@ -47,7 +49,7 @@ public class CalculatorController {
 
                 case "DEL":
                     // Calls function delChar from CalculatorView.java and removes the last character of the string being displayed and updates the display
-                    if (Objects.equals(myView.getDisplayText(), "Undefined") || Objects.equals(myView.getDisplayText(), "Infinity") || Objects.equals(myView.getDisplayText(), "That button doesnt work child") || Objects.equals(myView.getDisplayText(), "Error")){
+                    if (Objects.equals(myView.getDisplayText(), "Undefined") || Objects.equals(myView.getDisplayText(), "Infinity") || Objects.equals(myView.getDisplayText(), "That button doesnt work child") || Objects.equals(myView.getDisplayText(), "Error")) {
                         myView.allClearDisplay();
                         myView.setDisplayText("0");
                     }
@@ -61,17 +63,21 @@ public class CalculatorController {
                     break;
 
                 case "+/-":
-                    myView.setDisplayText("That button doesnt work child");
+                    myView.setDisplayText("That button doesn't work child");
                     break;
 
                 case "=":
                     // Evaluates expression
-                    myEngine.evaluateExpression(myView.getDisplayText());
-                    if (!Objects.equals(myView.getDisplayText(), "0")) {
-                        String[] result = myEngine.evaluateExpression(myView.getDisplayText());
-                        String resultString = result[0];
+
+                    String displayText = myView.getDisplayText();
+                    myEngine.evaluateExpression(displayText);
+                    String resultString = null;
+                    if (!Objects.equals(displayText, "0")) {
+                        String[] result = myEngine.evaluateExpression(displayText);
+                        resultString = result[0];
                         myView.setDisplayText(resultString);
                     }
+                    myView.updateHistory(displayText + " = " + resultString + "\n");
                     break;
             }
         }
