@@ -61,71 +61,212 @@ public class UnitConverterPanel extends JPanel {
         add(panel);
 
         convButton.addActionListener(e -> {
-            String oneText = oneField.getText();
-            double dOne = Double.parseDouble(oneText);
-            System.out.println("converted to doubles");
-            String twoS = (String) twoSpinner.getValue();
-            String oneS = (String) oneSpinner.getValue();
+            try {
+                String oneText = oneField.getText();
+                double dOne = Double.parseDouble(oneText);
+                double ans = 0;
+                System.out.println("converted to doubles");
+                String twoS = (String) twoSpinner.getValue();
+                String oneS = (String) oneSpinner.getValue();
 
 // done
-            if (Objects.equals(oneS, "Centimeters")){
-                if (Objects.equals(twoS, "Centimeters")){
-                    twoField.setText(oneText);
+                if (Objects.equals(oneS, "Centimeters")){
+                    if (Objects.equals(twoS, "Centimeters")){
+                        twoField.setText(String.valueOf(1 * dOne));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Meters")){
+                        ans = 0.01 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Kilometers")){
+                        ans = 0.00001 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Inches")){
+                        ans = 0.393 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Feet")){
+                        ans = 0.032 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Miles")){
+                        ans = 0.00000621 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
                 }
-                if (Objects.equals(twoS, "Meters")){
-                    twoField.setText(String.valueOf(0.01 * dOne));
-                }
-                if (Objects.equals(twoS, "Kilometers")){
-                    twoField.setText(String.valueOf(0.00001 * dOne));
-                }
-                if (Objects.equals(twoS, "Inches")){
-                    twoField.setText(String.valueOf(0.393 * dOne));
-                }
-                if (Objects.equals(twoS, "Feet")){
-                    twoField.setText(String.valueOf(0.032 * dOne));
-                }
-                if (Objects.equals(twoS, "Miles")){
-                    twoField.setText(String.valueOf(0.000621 * dOne));
-                }
-            }
 
-//
-            if (Objects.equals(oneS, "Meters")){
-                if (Objects.equals(twoS, "Centimeters")){
-                    twoField.setText(String.valueOf(100 * dOne));
+// done
+                if (Objects.equals(oneS, "Meters")){
+                    if (Objects.equals(twoS, "Centimeters")){
+                        ans = 100 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Meters")){
+                        twoField.setText(String.valueOf(1 * dOne));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Kilometers")){
+                        ans = 0.001 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Inches")){
+                        ans = 39.3701 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Feet")){
+                        ans = 3.28084 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Miles")){
+                        ans = 0.0000062 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
                 }
-                if (Objects.equals(twoS, "Meters")){
-                    twoField.setText(oneText);
-                }
-                if (Objects.equals(twoS, "Kilometers")){
-                    twoField.setText(String.valueOf(0.001 * dOne));
-                }
-                if (Objects.equals(twoS, "Inches")){
-                    twoField.setText(String.valueOf(39.3701 * dOne));
-                }
-                if (Objects.equals(twoS, "Feet")){
-                    twoField.setText(String.valueOf(3.28084 * dOne));
-                }
-                if (Objects.equals(twoS, "Miles")){
-                    twoField.setText(String.valueOf(0.0000062 * dOne));
-                }
-            }
 
-//
-            if (Objects.equals(oneSpinner, "Kilometers")){
-
-            }
-//
-            if (Objects.equals(oneSpinner, "Inches")){
-
-            }
-//
-            if (Objects.equals(oneSpinner, "Feet")){
-
-            }
-//
-            if (Objects.equals(oneSpinner, "Miles")){
-
+// done
+                if (Objects.equals(oneS, "Kilometers")){
+                    if (Objects.equals(twoS, "Centimeters")){
+                        ans = 100000 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Meters")){
+                        ans = 1000 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Kilometers")){
+                        twoField.setText(String.valueOf(1 * dOne));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Inches")){
+                        ans = 39370.1 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Feet")){
+                        ans = 3280.8416 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Miles")){
+                        ans = 0.62137 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                }
+// done
+                if (Objects.equals(oneS, "Inches")){
+                    if (Objects.equals(twoS, "Centimeters")){
+                        ans = 2.54 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Meters")){
+                        ans = 0.0254 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Kilometers")){
+                        ans = 0.00000254 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Inches")){
+                        twoField.setText(String.valueOf(1 * dOne));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Feet")){
+                        ans = 3280.8416 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Miles")){
+                        ans = 0.62137 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                }
+// done
+                if (Objects.equals(oneS, "Feet")){
+                    if (Objects.equals(twoS, "Centimeters")){
+                        ans = 30.48 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Meters")){
+                        ans = 0.3048 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Kilometers")){
+                        ans = 0.0003048 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Inches")){
+                        ans = 12 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Feet")){
+                        twoField.setText(String.valueOf(1 * dOne));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Miles")){
+                        ans = 5280 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                }
+// done
+                if (Objects.equals(oneS, "Miles")){
+                    if (Objects.equals(twoS, "Centimeters")){
+                        ans = 160934 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Meters")){
+                        ans = 1609.34 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Kilometers")){
+                        ans = 1.60934 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Inches")){
+                        ans = 63360 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Feet")){
+                        ans = 5280 * dOne;
+                        twoField.setText(String.format("%.8f", ans));
+                        twoField.setCaretPosition(0);
+                    }
+                    if (Objects.equals(twoS, "Miles")){
+                        twoField.setText(String.valueOf(1 * dOne));
+                        twoField.setCaretPosition(0);
+                    }
+                }
+            } catch (Exception ex) {
+                oneField.setText("");
+                twoField.setText("");
+                JOptionPane.showMessageDialog(this, "Please enter valid numbers.");
             }
         });
     }
