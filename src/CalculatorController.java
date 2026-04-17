@@ -35,7 +35,15 @@ public class CalculatorController {
             switch (actionSource) {
                 //Calls function updateDisplay from CalculatorView.java to add the number or symbol to the display
                 case "1","2","3","4","5","6","7","8","9","0","-","+","/","*","%",".":
-                    if (myView.getDisplayText().equals("0")) { myView.allClearDisplay(); }
+                    if (myView.getDisplayText().equals("0")) {
+                        if (!(Objects.equals(actionSource, "."))) {
+                            myView.allClearDisplay();
+                        }
+                        if (Objects.equals(actionSource, ".")) {
+                            myView.allClearDisplay();
+                            myView.updateDisplay("0");
+                        }
+                    }
                     myView.updateDisplay(actionSource);
                     break;
 

@@ -44,7 +44,7 @@ public class CalculatorPanel extends JPanel {
 
         // Creates a text pane to act as a display for the calculator
         displayPane = new JTextPane();
-        displayPane.setFont(new Font("Arial", Font.PLAIN, 25));
+        displayPane.setFont(new Font("Monospaced", Font.PLAIN, 25));
         displayPane.setEditable(false);
         displayPane.setOpaque(false);
         displayPane.setBackground(Color.BLACK);
