@@ -102,21 +102,6 @@ public class CalculatorPanel extends JPanel {
         displayPane.setText(displayText);
     }
 
-    // Sets text to "" to make it blank
-    public void allClearDisplay() {
-        displayPane.setText("");
-    }
-
-
-    // Deletes the last character being displayed
-    public void delChar() {
-        String delString = getDisplayText();
-        if (!delString.isEmpty()) {
-            delString = delString.substring(0, delString.length() - 1);
-            displayPane.setText(delString);
-        }
-    }
-
     /* Main method to run and view boilerplate code */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
