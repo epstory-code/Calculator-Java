@@ -1,4 +1,4 @@
-# Calculator
+# Calculator ✖️➗➕➖🟰
 
 ## Project Description
 Calculator-Java is a calculator programmed using Java Swing. The calculator includes a simple calculator with addition, substraction, multiplication and division, a tip calculator, a unit converter and the calculator history.
