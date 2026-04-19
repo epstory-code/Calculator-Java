@@ -14,6 +14,8 @@ Also, `CalculatorController` contains the action listener assigned to all the bu
 
 ## CalculatorEngine.java
 
+## CalculatorView.java
+
 ## CalculatorPanel.java
 CalculatorPanel is basically a class, which extends JPanel, and creates a JPanel to be used in a card layout.
 
@@ -38,3 +40,21 @@ The function `setButton Listener` assigns the variable `btnLstnr` the action lis
 The function `getDisplayText` returns the text in `displayPane`.
 
 The function `setDisplayText` sets the text in `displayPane` to the string passed in as a parameter.
+
+## TipCalculatorPanel.java
+
+`TipCalculatorPanel` creates a JPanel, which is allows the user to enter the *price*, the *tip percentage*, and the *number of people*.
+
+The panel is basically pairs of `JLabels` and `JTextFields` with labels to display the results and a `Calculate` and `Clear` button.
+
+- The `totalTipAmount` is calculated by multiplying the `priceValue` by the `tipPercent` divided by 100.
+- The `totalAmount` is calculated by adding the `totalTipAmount` to the `priceValue`.
+- The `totalPerson` is calculated by dividing the `totalAmount` by the `numOfPeople`.
+- The `totalTipPerPerson` is calculated by dividing the `totalTipAmount` by the `numOfPeople`.
+
+## HistoryPanel.java
+
+HistoryPanel.java consists of a `displayPane` and a `clearButon`.
+
+When the `=` button is pressed on the `CalculatorPanel`, the history is updated using the function `updateHistory()`.
+When `clearButton` is pressed, the text in the `displayPane` is set to an empty string.
