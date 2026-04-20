@@ -55,7 +55,7 @@ public class CalculatorController {
 
                 case "DEL":
                     // Calls function delChar from CalculatorView.java and removes the last character of the string being displayed and updates the display
-                    if (Objects.equals(myView.getDisplayText(), "Undefined") || Objects.equals(myView.getDisplayText(), "Infinity") || Objects.equals(myView.getDisplayText(), "That button doesnt work child") || Objects.equals(myView.getDisplayText(), "Error")) {
+                    if (Objects.equals(myView.getDisplayText(), "Undefined") || Objects.equals(myView.getDisplayText(), "Infinity") || Objects.equals(myView.getDisplayText(), "That button doesn't work") || Objects.equals(myView.getDisplayText(), "Error")) {
                         myView.allClearDisplay();
                         myView.setDisplayText("0");
                     }
@@ -69,7 +69,7 @@ public class CalculatorController {
                     break;
 
                 case "+/-":
-                    myView.setDisplayText("That button doesn't work child");
+                    myView.setDisplayText("That button doesn't work");
                     break;
 
                 case "=":
