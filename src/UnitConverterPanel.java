@@ -60,6 +60,7 @@ public class UnitConverterPanel extends JPanel {
 
         add(panel);
 
+        // Logic for the Unit Converter
         convButton.addActionListener(e -> {
             try {
                 String oneText = oneField.getText();
@@ -69,7 +70,7 @@ public class UnitConverterPanel extends JPanel {
                 String twoS = (String) twoSpinner.getValue();
                 String oneS = (String) oneSpinner.getValue();
 
-// done
+// Centimeters
                 if (Objects.equals(oneS, "Centimeters")){
                     if (Objects.equals(twoS, "Centimeters")){
                         twoField.setText(String.valueOf(1 * dOne));
@@ -86,12 +87,12 @@ public class UnitConverterPanel extends JPanel {
                         twoField.setCaretPosition(0);
                     }
                     if (Objects.equals(twoS, "Inches")){
-                        ans = 0.393 * dOne;
+                        ans = 0.393701 * dOne;
                         twoField.setText(String.format("%.8f", ans));
                         twoField.setCaretPosition(0);
                     }
                     if (Objects.equals(twoS, "Feet")){
-                        ans = 0.032 * dOne;
+                        ans = 0.03280841666667 * dOne;
                         twoField.setText(String.format("%.8f", ans));
                         twoField.setCaretPosition(0);
                     }
@@ -102,7 +103,7 @@ public class UnitConverterPanel extends JPanel {
                     }
                 }
 
-// done
+// Meters
                 if (Objects.equals(oneS, "Meters")){
                     if (Objects.equals(twoS, "Centimeters")){
                         ans = 100 * dOne;
@@ -129,13 +130,13 @@ public class UnitConverterPanel extends JPanel {
                         twoField.setCaretPosition(0);
                     }
                     if (Objects.equals(twoS, "Miles")){
-                        ans = 0.0000062 * dOne;
+                        ans = 0.0000062137152777784086452 * dOne;
                         twoField.setText(String.format("%.8f", ans));
                         twoField.setCaretPosition(0);
                     }
                 }
 
-// done
+// Kilometers
                 if (Objects.equals(oneS, "Kilometers")){
                     if (Objects.equals(twoS, "Centimeters")){
                         ans = 100000 * dOne;
@@ -157,17 +158,17 @@ public class UnitConverterPanel extends JPanel {
                         twoField.setCaretPosition(0);
                     }
                     if (Objects.equals(twoS, "Feet")){
-                        ans = 3280.8416 * dOne;
+                        ans = 3280.84 * dOne;
                         twoField.setText(String.format("%.8f", ans));
                         twoField.setCaretPosition(0);
                     }
                     if (Objects.equals(twoS, "Miles")){
-                        ans = 0.62137 * dOne;
+                        ans = 0.621371 * dOne;
                         twoField.setText(String.format("%.8f", ans));
                         twoField.setCaretPosition(0);
                     }
                 }
-// done
+// Inches
                 if (Objects.equals(oneS, "Inches")){
                     if (Objects.equals(twoS, "Centimeters")){
                         ans = 2.54 * dOne;
@@ -189,7 +190,7 @@ public class UnitConverterPanel extends JPanel {
                         twoField.setCaretPosition(0);
                     }
                     if (Objects.equals(twoS, "Feet")){
-                        ans = 3280.8416 * dOne;
+                        ans = 0.0833333 * dOne;
                         twoField.setText(String.format("%.8f", ans));
                         twoField.setCaretPosition(0);
                     }
@@ -199,7 +200,7 @@ public class UnitConverterPanel extends JPanel {
                         twoField.setCaretPosition(0);
                     }
                 }
-// done
+// Feet
                 if (Objects.equals(oneS, "Feet")){
                     if (Objects.equals(twoS, "Centimeters")){
                         ans = 30.48 * dOne;
@@ -231,7 +232,7 @@ public class UnitConverterPanel extends JPanel {
                         twoField.setCaretPosition(0);
                     }
                 }
-// done
+// Miles
                 if (Objects.equals(oneS, "Miles")){
                     if (Objects.equals(twoS, "Centimeters")){
                         ans = 160934 * dOne;
@@ -263,6 +264,7 @@ public class UnitConverterPanel extends JPanel {
                         twoField.setCaretPosition(0);
                     }
                 }
+            // Catches any exception like letters and gives an error message
             } catch (Exception ex) {
                 oneField.setText("");
                 twoField.setText("");
