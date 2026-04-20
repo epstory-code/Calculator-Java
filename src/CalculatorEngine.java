@@ -198,8 +198,8 @@ public class CalculatorEngine {
         if (!Objects.equals(stringResult, error)) {
             double doubleResult = Double.parseDouble(stringResult);
             if (doubleResult % 1 == 0) {
-                int newResult = (int) doubleResult;
-                stringResult = Integer.toString(newResult);
+                long newResult = (long) doubleResult;
+                stringResult = Long.toString(newResult);
             }
             if (Objects.equals(stringResult, "NaN")) {
                 stringResult = "Undefined";
