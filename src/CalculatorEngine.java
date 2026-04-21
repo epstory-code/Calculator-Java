@@ -10,6 +10,12 @@ public class CalculatorEngine {
         return "";
     }
 
+    public String[] splitExpression(String expression) {
+        String str = expression;
+        String[] separated = str.split("(?<=[+\\-*/%])|(?=[+\\-*/%])");
+        return separated;
+    }
+
     // Function to solve the expression
     public String[] evaluateExpression(String expression) {
         String str = expression;
@@ -216,9 +222,9 @@ public class CalculatorEngine {
         }
 
         // Catches if any message is already in the expression
-        if (list.contains("Undefined") | list.contains("Error") | list.contains("That button doesn't work") | list.contains("Infinity")) {
+        if (list.contains("Undefined") | list.contains(error) | list.contains("Infinity")) {
             list.clear();
-            list.add("Undefined");
+            list.add(error);
             stringResult = error;
         }
 

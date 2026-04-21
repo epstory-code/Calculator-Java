@@ -1,6 +1,9 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class CalculatorController {
@@ -69,7 +72,24 @@ public class CalculatorController {
                     break;
 
                 case "+/-":
-                    myView.setDisplayText("That button doesn't work");
+                    String[] separated = myEngine.splitExpression(myView.getDisplayText());
+                    List<String> list = new ArrayList<>(Arrays.asList(separated));
+                    try {
+                        double idk = Double.parseDouble(list.getLast());
+                        idk = idk * -1;
+                        list.set(list.size() - 1, String.valueOf(idk));
+                        if (idk % 1 == 0) {
+                            long newIdk = (long) idk;
+                            list.set(list.size() - 1, String.valueOf(newIdk));
+                        }
+                        myView.allClearDisplay();
+                        for (String q : list) {
+                            myView.updateDisplay(q);
+                        }
+                    } catch (Exception idk) {
+                        myView.allClearDisplay();
+                        myView.setDisplayText("Error");
+                    }
                     break;
 
                 case "=":
