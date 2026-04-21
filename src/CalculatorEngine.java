@@ -46,6 +46,29 @@ public class CalculatorEngine {
                     System.out.println(list);
 
                     // For multiplication
+                    if (list.contains(sub)) {
+                        System.out.println("found negative maybe?");
+                        index = 0;
+                        for (int i = 0; i < list.size(); i++) {
+                            String item = list.get(i);
+                            System.out.println(item);
+                            if (!(item.equals(sub))) {
+                                index++;
+                            } else {
+                                System.out.println("found it");
+                                if (Objects.equals(list.indexOf(list.get(index)), 0) | Objects.equals(list.get(index), "*") | Objects.equals(list.get(index), "/") | Objects.equals(list.get(index), "%") | Objects.equals(list.get(index), "-") | Objects.equals(list.get(index), "+") ) {
+                                    System.out.println("its a negative!");
+                                    double newNeg = Double.parseDouble(list.get(index + 1));
+                                    System.out.println("turned into double");
+                                    list.set(index + 1, Double.toString(newNeg * -1));
+                                    System.out.println("set it to negative");
+                                    list.remove(index);
+                                    System.out.println(list);
+                                }
+                            }
+                        }
+                    }
+
                     if (list.contains(mult)) {
                         System.out.println("found * in list");
                         index = 0;
@@ -185,9 +208,10 @@ public class CalculatorEngine {
             }
 
         // Catches any exception and turns it into an "Error" message
-        } catch (Exception e) {
+        } catch (Exception ex) {
             list.clear();
             list.add("Undefined");
+            System.out.println("Exception error");
             stringResult = error;
         }
 

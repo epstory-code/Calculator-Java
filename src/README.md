@@ -13,6 +13,17 @@ Second, the constructor for `CalculatorController` calls the function `setButton
 Also, `CalculatorController` contains the action listener assigned to all the buttons in the arithmetic calculator panel.
 
 ## CalculatorEngine.java
+This class contains the function `evaluateExpression` that takes the expression entered into the calculator and solves it.
+
+First, the function splits the string taken from the calculator and splits it by each of the operators (+,-,*,/,%).
+
+Then, it goes through a loop that identifies and solves the multiplication and division in the PEMDAS order.
+
+It does the addition and subtraction separately in a switch-case block so that it doesn't have to do them in any order.
+
+After enough loops the list containing all the numbers in the expression is reduced to one, which is the result of the expression
+
+At the end of the code, it handles the exceptions like the error messages
 
 ## CalculatorView.java
 CalculatorView has a few main features.
