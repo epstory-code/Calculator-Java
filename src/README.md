@@ -68,9 +68,9 @@ The panel is basically pairs of `JLabels` and `JTextFields` with labels to displ
 
 ## UnitConverter.java
 
-The `UnitConverter` creates 2 `JTextField`s and 2 `JSpinners`s, with one of each on either end of the middle `convButton`
+The `UnitConverter` creates two `JTextField`s and two `JSpinners`s, with one of each on either end of the middle `convButton`
 
-The first spinner if for the input's units, while the second one is for what the want to convert it to
+The first spinner is for the input's units, while the second one is for what the want to convert it to
 
 The button is used to covert the input into the result
 
