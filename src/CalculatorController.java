@@ -80,6 +80,10 @@ public class CalculatorController {
                             list.remove(list.getFirst());
                             myView.setDisplayText(list.getFirst());
                         } else if (Objects.equals(list.size(), 1)) {
+                            if (list.get(0) == "0") {
+                                myView.allClearDisplay();
+                                myView.setDisplayText("Error");
+                            }
                             double idk = Double.parseDouble(list.get(0));
                             idk = idk * -1;
                             list.set(0, String.valueOf(idk));
