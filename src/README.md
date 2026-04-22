@@ -57,7 +57,7 @@ The function `setDisplayText` sets the text in `displayPane` to the string passe
 
 ## TipCalculatorPanel.java
 
-`TipCalculatorPanel` creates a JPanel, which is allows the user to enter the *price*, the *tip percentage*, and the *number of people*.
+`TipCalculatorPanel` creates a JPanel, which allows the user to enter the *price*, the *tip percentage*, and the *number of people*.
 
 The panel is basically pairs of `JLabels` and `JTextFields` with labels to display the results and a `Calculate` and `Clear` button.
 
@@ -67,6 +67,14 @@ The panel is basically pairs of `JLabels` and `JTextFields` with labels to displ
 - The `totalTipPerPerson` is calculated by dividing the `totalTipAmount` by the `numOfPeople`.
 
 ## UnitConverter.java
+
+The `UnitConverter` creates 2 `JTextField`s and 2 `JSpinners`s, with one of each on either end of the middle `convButton`
+
+The first spinner if for the input's units, while the second one is for what the want to convert it to
+
+The button is used to covert the input into the result
+
+The conversion happens by multiplying the input by exact measurements
 
 ## HistoryPanel.java
 
