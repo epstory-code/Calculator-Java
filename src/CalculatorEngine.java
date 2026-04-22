@@ -234,11 +234,18 @@ public class CalculatorEngine {
 
         // Turns any double into a integer if it can
         if (!Objects.equals(stringResult, error)) {
+            try {
             double doubleResult = Double.parseDouble(stringResult);
             if (doubleResult % 1 == 0) {
                 // used long because it has more range of values
                 long newResult = (long) doubleResult;
                 stringResult = Long.toString(newResult);
+            }
+            } catch (Exception NumberFormatException) {
+                list.clear();
+                list.add("Undefined");
+                System.out.println("Exception error");
+                stringResult = error;
             }
 
             // Switches NaN message to an "Undefined" message
