@@ -74,17 +74,42 @@ public class CalculatorController {
                 case "+/-":
                     String[] separated = myEngine.splitExpression(myView.getDisplayText());
                     List<String> list = new ArrayList<>(Arrays.asList(separated));
+                    System.out.println(list);
                     try {
-                        double idk = Double.parseDouble(list.getLast());
-                        idk = idk * -1;
-                        list.set(list.size() - 1, String.valueOf(idk));
-                        if (idk % 1 == 0) {
-                            long newIdk = (long) idk;
-                            list.set(list.size() - 1, String.valueOf(newIdk));
-                        }
-                        myView.allClearDisplay();
-                        for (String q : list) {
-                            myView.updateDisplay(q);
+                        if (Objects.equals(list.size(), 2) && Objects.equals(list.get(0), "-")) {
+                            list.remove(list.getFirst());
+                            myView.setDisplayText(list.getFirst());
+                        } else if (Objects.equals(list.size(), 1)) {
+                            double idk = Double.parseDouble(list.get(0));
+                            idk = idk * -1;
+                            list.set(0, String.valueOf(idk));
+                            if (idk % 1 == 0) {
+                                long newIdk = (long) idk;
+                                list.set(0, String.valueOf(newIdk));
+                            }
+                            myView.allClearDisplay();
+                            for (String q : list) {
+                                myView.updateDisplay(q);
+                            }
+                        } else if (!(Objects.equals(list.size(), 1)) && Objects.equals(list.get(list.size() - 2), "-") && List.of("*", "/", "+", "-", "%").contains(list.get(list.size() - 3))) {
+                            list.remove(list.size() - 2);
+                            System.out.println(list);
+                            myView.allClearDisplay();
+                            for (String q : list) {
+                                myView.updateDisplay(q);
+                            }
+                        } else {
+                            double idk = Double.parseDouble(list.getLast());
+                            idk = idk * -1;
+                            list.set(list.size() - 1, String.valueOf(idk));
+                            if (idk % 1 == 0) {
+                                long newIdk = (long) idk;
+                                list.set(list.size() - 1, String.valueOf(newIdk));
+                            }
+                            myView.allClearDisplay();
+                            for (String q : list) {
+                                myView.updateDisplay(q);
+                            }
                         }
                     } catch (Exception idk) {
                         myView.allClearDisplay();

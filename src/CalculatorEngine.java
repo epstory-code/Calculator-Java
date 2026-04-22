@@ -46,23 +46,24 @@ public class CalculatorEngine {
 
         // Loops through the expression and does multiplication and subtraction
         try {
-            if (!(list.contains("Undefined") | list.contains(error) | list.contains("That button doesn't work") | list.contains("Infinity"))) {
+            if (!(list.contains("Undefined") | list.contains(error) | list.contains("Infinity"))) {
                 index = 0;
                 while (list.size() > 1) {
                     System.out.println(list);
 
-                    // For multiplication
+                    // For negatives
                     if (list.contains(sub)) {
                         System.out.println("found negative maybe?");
                         index = 0;
-                        for (int i = 0; i < list.size(); i++) {
-                            String item = list.get(i);
+                        for (int e = 0; e < list.size(); e++) {
+                            String item = list.get(e);
                             System.out.println(item);
+                            System.out.println("test");
                             if (!(item.equals(sub))) {
                                 index++;
                             } else {
                                 System.out.println("found it");
-                                if (Objects.equals(list.indexOf(list.get(index)), 0) | Objects.equals(list.get(index), "*") | Objects.equals(list.get(index), "/") | Objects.equals(list.get(index), "%") | Objects.equals(list.get(index), "-") | Objects.equals(list.get(index), "+") ) {
+                                if (Objects.equals(index, 0) ) {
                                     System.out.println("its a negative!");
                                     double newNeg = Double.parseDouble(list.get(index + 1));
                                     System.out.println("turned into double");
@@ -70,11 +71,24 @@ public class CalculatorEngine {
                                     System.out.println("set it to negative");
                                     list.remove(index);
                                     System.out.println(list);
+                                } if (index > 0) {
+                                    if (Objects.equals(list.get(index - 1), "*") | Objects.equals(list.get(index - 1), "/") | Objects.equals(list.get(index - 1), "%") | Objects.equals(list.get(index - 1), "-") | Objects.equals(list.get(index - 1), "+")) {
+                                        System.out.println("its a negative!");
+                                        double newNeg = Double.parseDouble(list.get(index + 1));
+                                        System.out.println("turned into double");
+                                        list.set(index + 1, Double.toString(newNeg * -1));
+                                        System.out.println("set it to negative");
+                                        list.remove(index);
+                                        System.out.println(list);
+                                    }
+                                } else {
+                                    break;
                                 }
                             }
                         }
                     }
 
+                    // For multiplication
                     if (list.contains(mult)) {
                         System.out.println("found * in list");
                         index = 0;
