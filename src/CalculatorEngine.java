@@ -5,11 +5,6 @@ import java.util.Objects;
 
 public class CalculatorEngine {
 
-    private double result = 0;
-    public String updateExpression() {
-        return "";
-    }
-
     public String[] splitExpression(String expression) {
         String str = expression;
         String[] separated = str.split("(?<=[+\\-*/%])|(?=[+\\-*/%])");
@@ -18,10 +13,11 @@ public class CalculatorEngine {
 
     // Function to solve the expression
     public String[] evaluateExpression(String expression) {
+        // All variables
         String str = expression;
         String stringResult = "";
         String error = "Error";
-        String mult = "*";
+        String multi = "*";
         String div = "/";
         String rem = "%";
         String add = "+";
@@ -34,24 +30,26 @@ public class CalculatorEngine {
         List<String> list = new ArrayList<>(Arrays.asList(separated));
         System.out.println(list);
         System.out.println("printing out integers into doubles...");
-        // Turns all the integers into doubles
+
+        // Surrounded by Try/Catch block to check for exceptions
         try {
+            // Turns all the integers into doubles
             for (String x : list) {
                 index++;
-                if (!(x.equals(mult) | x.equals(div) | x.equals(add) | x.equals(sub) | x.equals(rem) | x.equals("Undefined") | x.equals(error) | x.equals("Infinity") | x.equals("That button doesn't work"))) {
+                if (!List.of(multi, div, add, sub, rem,"Undefined", error, "Infinity").contains(x)) {
                     double newX = Double.parseDouble(x);
                     System.out.println(newX);
                     list.set(index - 1, String.valueOf(newX));
                 }
             }
 
-        // Loops through the expression and does multiplication and subtraction
+            // Loops through the expression and does multiplication and subtraction
             if (!(list.contains("Undefined") | list.contains(error) | list.contains("Infinity"))) {
                 index = 0;
                 while (list.size() > 1) {
                     System.out.println(list);
 
-                    // For negatives
+                    // Finds and defines negatives, instead of mixing them up with subtraction signs
                     if (list.contains(sub)) {
                         index = 0;
                         for (int e = 0; e < list.size(); e++) {
@@ -59,18 +57,24 @@ public class CalculatorEngine {
                             if (!(item.equals(sub))) {
                                 index++;
                             } else if (item.equals(sub) && !Objects.equals(index + 1, "-")) {
+
+                                // If negative is at the beginning of the expression
                                 if (Objects.equals(index, 0) ) {
                                     double newNeg = Double.parseDouble(list.get(index + 1));
                                     list.set(index + 1, Double.toString(newNeg * -1));
                                     list.remove(0);
-                                    index++;
+
+                                // If negative comes after an operator
                                 } else if (index > 0 && List.of("*","-","+","/","%").contains(list.get(index - 1))) {
                                     double newNeg = Double.parseDouble(list.get(index + 1));
                                     list.set(index + 1, Double.toString(newNeg * -1));
                                     list.remove(index);
+
+                                // If two - signs occur
                                 } else if (Objects.equals(list.get(index), "-") && Objects.equals(list.get(index - 1), "-")) {
                                     list.set(index, "+");
                                     list.remove(index - 1);
+
                                 } else {
                                     index++;
                                 }
@@ -79,12 +83,12 @@ public class CalculatorEngine {
                     }
 
                     // For multiplication
-                    if (list.contains(mult)) {
+                    if (list.contains(multi)) {
                         System.out.println("found * in list");
                         index = 0;
                         for (String item : list) {
                             System.out.println(item);
-                            if (!item.equals(mult)) {
+                            if (!item.equals(multi)) {
                                 index++;
                             } else {
                                 System.out.println("^ here it is");
@@ -92,6 +96,7 @@ public class CalculatorEngine {
                             }
                         }
                         System.out.println("multiplying...");
+                        // Integers before and after the operator
                         int aPlace = index - 1;
                         int bPlace = index + 1;
                         String a = list.get(aPlace);
@@ -108,6 +113,7 @@ public class CalculatorEngine {
                         list.remove(index);
                         System.out.println("the result is " + stringResult);
                         System.out.println(list);
+                        // Continues the loop
                         continue;
 
                     // For Division
@@ -232,15 +238,16 @@ public class CalculatorEngine {
             stringResult = error;
         }
 
-        // Turns any double into a integer if it can
+        // Turns any double into an integer if it can
         if (!Objects.equals(stringResult, error)) {
+            // Another try catch to catch the NumberFormatException
             try {
-            double doubleResult = Double.parseDouble(stringResult);
-            if (doubleResult % 1 == 0) {
-                // used long because it has more range of values
-                long newResult = (long) doubleResult;
-                stringResult = Long.toString(newResult);
-            }
+                double doubleResult = Double.parseDouble(stringResult);
+                if (doubleResult % 1 == 0) {
+                    // Long because it has more range of values
+                    long newResult = (long) doubleResult;
+                    stringResult = Long.toString(newResult);
+                }
             } catch (Exception NumberFormatException) {
                 list.clear();
                 list.add("Undefined");

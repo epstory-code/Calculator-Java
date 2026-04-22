@@ -14,6 +14,7 @@ public class CalculatorController {
 
     // Constructor for CalculatorController
     public CalculatorController() {
+
         // Initializes instances of the classes CalculatorEngine, CalculatorView, and CustomListener
         myEngine = new CalculatorEngine();
         myView = new CalculatorView();
@@ -24,18 +25,15 @@ public class CalculatorController {
     }
 
     private class CustomListener implements ActionListener {
-        /**
-         * Invoked when an action occurs.
-         *
-         * @param e the event to be processed
-         */
 
         @Override
         public void actionPerformed(ActionEvent e) {
+
             //Stores the action command from the parameter e in the string actionSource
             String actionSource = e.getActionCommand();
 
             switch (actionSource) {
+
                 //Calls function updateDisplay from CalculatorView.java to add the number or symbol to the display
                 case "1","2","3","4","5","6","7","8","9","0","-","+","/","*","%",".":
                     if (myView.getDisplayText().equals("0")) {
@@ -51,14 +49,16 @@ public class CalculatorController {
                     break;
 
                 case "AC":
+
                     // Calls function allClearDisplay from CalculatorView.java to set the display to an empty string
                     myView.allClearDisplay();
                     myView.setDisplayText("0");
                     break;
 
                 case "DEL":
+
                     // Calls function delChar from CalculatorView.java and removes the last character of the string being displayed and updates the display
-                    if (Objects.equals(myView.getDisplayText(), "Undefined") || Objects.equals(myView.getDisplayText(), "Infinity") || Objects.equals(myView.getDisplayText(), "That button doesn't work") || Objects.equals(myView.getDisplayText(), "Error")) {
+                    if (List.of("Undefined", "Infinity", "Error").contains(myView.getDisplayText())) {
                         myView.allClearDisplay();
                         myView.setDisplayText("0");
                     }
@@ -72,13 +72,21 @@ public class CalculatorController {
                     break;
 
                 case "+/-":
+
+                    // Sets the last number in the expression to the opposite of itself e.g. 1 to -1
                     String[] separated = myEngine.splitExpression(myView.getDisplayText());
                     List<String> list = new ArrayList<>(Arrays.asList(separated));
                     System.out.println(list);
+
+                    // Try/Catch block surrounds it in case of error
                     try {
+
+                        // If there's a - there already
                         if (Objects.equals(list.size(), 2) && Objects.equals(list.get(0), "-")) {
                             list.remove(list.getFirst());
                             myView.setDisplayText(list.getFirst());
+
+                        // If there's only one number in the expression
                         } else if (Objects.equals(list.size(), 1)) {
                             if (list.get(0) == "0") {
                                 myView.allClearDisplay();
@@ -95,6 +103,8 @@ public class CalculatorController {
                             for (String q : list) {
                                 myView.updateDisplay(q);
                             }
+
+                        // If there's a - already and its after a operator
                         } else if (!(Objects.equals(list.size(), 1)) && Objects.equals(list.get(list.size() - 2), "-") && List.of("*", "/", "+", "-", "%").contains(list.get(list.size() - 3))) {
                             list.remove(list.size() - 2);
                             System.out.println(list);
@@ -102,6 +112,7 @@ public class CalculatorController {
                             for (String q : list) {
                                 myView.updateDisplay(q);
                             }
+
                         } else {
                             double idk = Double.parseDouble(list.getLast());
                             idk = idk * -1;
@@ -123,7 +134,6 @@ public class CalculatorController {
 
                 case "=":
                     // Evaluates expression
-
                     String displayText = myView.getDisplayText();
                     myEngine.evaluateExpression(displayText);
                     String resultString = null;
