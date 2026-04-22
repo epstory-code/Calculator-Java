@@ -53,36 +53,26 @@ public class CalculatorEngine {
 
                     // For negatives
                     if (list.contains(sub)) {
-                        System.out.println("found negative maybe?");
                         index = 0;
                         for (int e = 0; e < list.size(); e++) {
                             String item = list.get(e);
-                            System.out.println(item);
-                            System.out.println("test");
                             if (!(item.equals(sub))) {
                                 index++;
-                            } else {
-                                System.out.println("found it");
+                            } else if (item.equals(sub) && !Objects.equals(index + 1, "-")) {
                                 if (Objects.equals(index, 0) ) {
-                                    System.out.println("its a negative!");
                                     double newNeg = Double.parseDouble(list.get(index + 1));
-                                    System.out.println("turned into double");
                                     list.set(index + 1, Double.toString(newNeg * -1));
-                                    System.out.println("set it to negative");
+                                    list.remove(0);
+                                    index++;
+                                } else if (index > 0 && List.of("*","-","+","/","%").contains(list.get(index - 1))) {
+                                    double newNeg = Double.parseDouble(list.get(index + 1));
+                                    list.set(index + 1, Double.toString(newNeg * -1));
                                     list.remove(index);
-                                    System.out.println(list);
-                                } if (index > 0) {
-                                    if (Objects.equals(list.get(index - 1), "*") | Objects.equals(list.get(index - 1), "/") | Objects.equals(list.get(index - 1), "%") | Objects.equals(list.get(index - 1), "-") | Objects.equals(list.get(index - 1), "+")) {
-                                        System.out.println("its a negative!");
-                                        double newNeg = Double.parseDouble(list.get(index + 1));
-                                        System.out.println("turned into double");
-                                        list.set(index + 1, Double.toString(newNeg * -1));
-                                        System.out.println("set it to negative");
-                                        list.remove(index);
-                                        System.out.println(list);
-                                    }
+                                } else if (Objects.equals(list.get(index), "-") && Objects.equals(list.get(index - 1), "-")) {
+                                    list.set(index, "+");
+                                    list.remove(index - 1);
                                 } else {
-                                    break;
+                                    index++;
                                 }
                             }
                         }
