@@ -35,17 +35,17 @@ public class CalculatorEngine {
         System.out.println(list);
         System.out.println("printing out integers into doubles...");
         // Turns all the integers into doubles
-        for (String x : list) {
-            index++;
-            if (!(x.equals(mult) | x.equals(div) | x.equals(add) | x.equals(sub) | x.equals(rem) | x.equals("Undefined") | x.equals(error) | x.equals("Infinity") | x.equals("That button doesn't work"))) {
-                double newX = Double.parseDouble(x);
-                System.out.println(newX);
-                list.set(index - 1, String.valueOf(newX));
+        try {
+            for (String x : list) {
+                index++;
+                if (!(x.equals(mult) | x.equals(div) | x.equals(add) | x.equals(sub) | x.equals(rem) | x.equals("Undefined") | x.equals(error) | x.equals("Infinity") | x.equals("That button doesn't work"))) {
+                    double newX = Double.parseDouble(x);
+                    System.out.println(newX);
+                    list.set(index - 1, String.valueOf(newX));
+                }
             }
-        }
 
         // Loops through the expression and does multiplication and subtraction
-        try {
             if (!(list.contains("Undefined") | list.contains(error) | list.contains("Infinity"))) {
                 index = 0;
                 while (list.size() > 1) {
