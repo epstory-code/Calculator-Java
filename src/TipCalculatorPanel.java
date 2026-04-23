@@ -124,6 +124,12 @@ public class TipCalculatorPanel extends JPanel {
 
                 if (numOfPeople <= 0) {
                     JOptionPane.showMessageDialog(this, "Number of people must be greater than 0");
+                }
+                if (priceValue <= 0) {
+                    JOptionPane.showMessageDialog(this, "Price must be greater than 0");
+                }
+                if (tipPercent <= 0) {
+                    JOptionPane.showMessageDialog(this, "Tip % must be greater than 0");
                 } else {
                     double totalTipAmount = priceValue * (tipPercent / 100);
                     double totalAmount = priceValue + totalTipAmount;
