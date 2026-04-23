@@ -33,6 +33,7 @@ public class CalculatorEngine {
 
         // Surrounded by Try/Catch block to check for exceptions
         try {
+
             // Turns all the integers into doubles
             for (String x : list) {
                 index++;
@@ -51,6 +52,7 @@ public class CalculatorEngine {
 
                     // Finds and defines negatives, instead of mixing them up with subtraction signs
                     if (list.contains(sub)) {
+                        System.out.println("Found negative");
                         index = 0;
                         for (int e = 0; e < list.size(); e++) {
                             String item = list.get(e);
@@ -60,26 +62,30 @@ public class CalculatorEngine {
 
                                 // If negative is at the beginning of the expression
                                 if (Objects.equals(index, 0) ) {
-                                    double newNeg = Double.parseDouble(list.get(index + 1));
-                                    list.set(index + 1, Double.toString(newNeg * -1));
+                                    double newNeg = Double.parseDouble(list.get(1));
+                                    list.set(1, Double.toString(newNeg * -1));
                                     list.remove(0);
+                                    index++;
 
                                 // If negative comes after an operator
                                 } else if (index > 0 && List.of("*","-","+","/","%").contains(list.get(index - 1))) {
                                     double newNeg = Double.parseDouble(list.get(index + 1));
                                     list.set(index + 1, Double.toString(newNeg * -1));
                                     list.remove(index);
+                                    index++;
 
                                 // If two - signs occur
                                 } else if (Objects.equals(list.get(index), "-") && Objects.equals(list.get(index - 1), "-")) {
                                     list.set(index, "+");
                                     list.remove(index - 1);
+                                    index++;
 
                                 } else {
                                     index++;
                                 }
                             }
                         }
+                        System.out.println(list);
                     }
 
                     // For multiplication
@@ -121,7 +127,6 @@ public class CalculatorEngine {
                         System.out.println("found / in list");
                         index = 0;
                         for (String item : list) {
-                            System.out.println(item);
                             if (!item.equals(div)) {
                                 index++;
                             } else {
@@ -150,7 +155,6 @@ public class CalculatorEngine {
                         System.out.println("found % in list");
                         index = 0;
                         for (String item : list) {
-                            System.out.println(item);
                             if (!item.equals(rem)) {
                                 index++;
                             } else {
@@ -199,9 +203,11 @@ public class CalculatorEngine {
                                 list.remove(index - 1);
                                 System.out.println("the result is " + stringResult);
                                 System.out.println(list);
+                                index = 0;
                                 continue;
 
                             case "-":
+                                System.out.println(index);
                                 System.out.println("found - in list");
                                 System.out.println("subtracting...");
                                 aPlace = index - 2;
@@ -217,6 +223,7 @@ public class CalculatorEngine {
                                 list.remove(index - 1);
                                 System.out.println("the result is " + stringResult);
                                 System.out.println(list);
+                                index = 0;
                                 continue;
                         }
                     }
