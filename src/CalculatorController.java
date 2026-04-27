@@ -142,7 +142,7 @@ public class CalculatorController {
                         resultString = result[0];
                         myView.setDisplayText(resultString);
                     }
-                    if (Objects.equals(resultString, "9223372036854775807") | Objects.equals(resultString, "-9223372036854775807")) {
+                    if (Objects.equals(resultString, "9223372036854775807") | Objects.equals(resultString, "-9223372036854775808")) {
                         resultString = "Value too large for calculator";
                         myView.setDisplayText(resultString);
                     }
